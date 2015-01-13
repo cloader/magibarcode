@@ -115,6 +115,8 @@
             this.bc_memoTableAdapter = new barc.barcodeDataSetTableAdapters.bc_memoTableAdapter();
             this.textBox14 = new System.Windows.Forms.TextBox();
             this.textBox15 = new System.Windows.Forms.TextBox();
+            this.comboBox12 = new System.Windows.Forms.ComboBox();
+            this.label17 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.bctype1BindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barcodeDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bCTYPE4BindingSource1)).BeginInit();
@@ -242,6 +244,7 @@
             this.comboBox2.TabIndex = 8;
             this.comboBox2.ValueMember = "code";
             this.comboBox2.DropDown += new System.EventHandler(this.comboBox2_DropDown);
+            this.comboBox2.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
             this.comboBox2.SelectedValueChanged += new System.EventHandler(this.comboBox2_SelectedValueChanged);
             // 
             // bcclassBindingSource
@@ -674,6 +677,7 @@
             this.comboBox5.Size = new System.Drawing.Size(132, 20);
             this.comboBox5.TabIndex = 45;
             this.comboBox5.ValueMember = "code";
+            this.comboBox5.SelectedIndexChanged += new System.EventHandler(this.comboBox5_SelectedIndexChanged);
             this.comboBox5.SelectedValueChanged += new System.EventHandler(this.comboBox5_SelectedValueChanged);
             // 
             // bcproductBindingSource
@@ -794,11 +798,46 @@
             this.textBox15.Size = new System.Drawing.Size(220, 21);
             this.textBox15.TabIndex = 57;
             // 
+            // comboBox12
+            // 
+            this.comboBox12.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox12.FormattingEnabled = true;
+            this.comboBox12.Items.AddRange(new object[] {
+            "A",
+            "B",
+            "C",
+            "D",
+            "E",
+            "F",
+            "G",
+            "H",
+            "I",
+            "J",
+            "K",
+            "L",
+            "M",
+            "N"});
+            this.comboBox12.Location = new System.Drawing.Point(495, 228);
+            this.comboBox12.Name = "comboBox12";
+            this.comboBox12.Size = new System.Drawing.Size(121, 20);
+            this.comboBox12.TabIndex = 58;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(430, 234);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(59, 12);
+            this.label17.TabIndex = 59;
+            this.label17.Text = "电脑编号:";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(671, 574);
+            this.Controls.Add(this.label17);
+            this.Controls.Add(this.comboBox12);
             this.Controls.Add(this.textBox15);
             this.Controls.Add(this.textBox14);
             this.Controls.Add(this.comboBox13);
@@ -963,6 +1002,8 @@
         private barcodeDataSetTableAdapters.bc_memoTableAdapter bc_memoTableAdapter;
         private System.Windows.Forms.TextBox textBox14;
         private System.Windows.Forms.TextBox textBox15;
+        private System.Windows.Forms.ComboBox comboBox12;
+        private System.Windows.Forms.Label label17;
     }
 }
 

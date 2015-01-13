@@ -170,6 +170,9 @@
     <Compile Include="Symbologies\UPCE.cs" />
     <Compile Include="Symbologies\UPCSupplement2.cs" />
     <Compile Include="Symbologies\UPCSupplement5.cs" />
+    <EmbeddedResource Include="barcodeDataSet.resx">
+      <DependentUpon>barcodeDataSet.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>

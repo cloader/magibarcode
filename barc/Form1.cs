@@ -323,6 +323,11 @@ namespace barc
                 MessageBox.Show("电池片备注无效");
                 return false;
             }
+            if (comboBox12.SelectedItem == null)
+            {
+                MessageBox.Show("电脑编号无效");
+                return false;
+            }
             return true;
         }
 
@@ -344,6 +349,8 @@ namespace barc
             String ctype_code = comboBox10.SelectedValue.ToString();//电池片状态
             String ddate = dateTimePicker1.Value.Year % 100 + dates[dateTimePicker1.Value.Month] + dates[dateTimePicker1.Value.Day];
             String ddatenum = "";
+            String computer = comboBox12.SelectedItem.ToString();
+            Console.WriteLine("computer"+computer);
             if (bc_numTableAdapter.selectBy(ddate) == null)
             {
                 bc_numTableAdapter.InsertQuery(ddate, 1);
@@ -370,11 +377,11 @@ namespace barc
             sb.Append(color_code);//电池片颜色
             sb.Append(flow_code);//高低电流
             sb.Append("-");
+            sb.Append(computer);
             sb.Append(ctype_code);
             sb.Append(ddate);
             sb.Append(ddatenum);
             String barcode = sb.ToString();
-            
             bc_barcodeTableAdapter.Insert(class_code, color_code, ctype_code, flow_code, factory_code,
                 gonglv_code, oem_code, product_code, type1_code,
                 type2_code, type3_code, type4_code, dateTimePicker1.Value.Year + "-" + dateTimePicker1.Value.Month + "-" + dateTimePicker1.Value.Day, barcode,
@@ -490,7 +497,7 @@ namespace barc
         {
             if (comboBox2.Text.IndexOf("A") != -1)
             {
-                textBox11.Text = "A";
+                textBox11.Text = comboBox2.Text.Substring(0,comboBox2.Text.IndexOf("A")+1);
             }
             else
             {
@@ -570,7 +577,7 @@ namespace barc
 
         private void ToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("此程序为迈吉电池片打印标签设计。\nautor:Mr.Chen\ndate:2013.7\nversion:1.6.1");
+            MessageBox.Show("此程序为迈吉电池片打印标签设计。\nautor:Mr.Chen\ndate:2013.7\nversion:1.8");
         }
 
         private void ToolStripMenuItem2_Click(object sender, EventArgs e)
@@ -677,27 +684,20 @@ namespace barc
 
                 }
 
-            if (comboBox2.Text.IndexOf("A1") != -1) {
-                textBox7.Text += "-1";
+            if (comboBox2.Text.IndexOf("A") != -1) {
+                String A=comboBox2.Text.Substring(comboBox2.Text.IndexOf("A")+1);
+                textBox7.Text += "-"+A;
             }
-            else if (comboBox2.Text.IndexOf("A2") != -1) {
-                textBox7.Text += "-2";
-            }
-            else if (comboBox2.Text.IndexOf("A3") != -1) {
-                textBox7.Text += "-3";
-            }
-            else if (comboBox2.Text.IndexOf("A4") != -1)
-            {
-                textBox7.Text += "-4";
-            }
-            else if (comboBox2.Text.IndexOf("A5") != -1)
-            {
-                textBox7.Text += "-5";
-            }
-            else if (comboBox2.Text.IndexOf("A6") != -1)
-            {
-                textBox7.Text += "-6";
-            }
+        }
+
+        private void comboBox5_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
 
        

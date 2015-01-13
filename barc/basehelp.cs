@@ -8,6 +8,7 @@ using System.IO;
 using System.Xml;
 using System.Runtime.Serialization.Json;
 using System.Collections;
+
 using System.Runtime.Serialization;
 using System.Data.OleDb;
 using System.Data;
@@ -77,8 +78,10 @@ namespace barc
                   string backstr = client.DownloadString(new Uri("http://"+IP+":8888/iims/CodeServlet.svt?method=up&data=" + s));
                   if (backstr.Equals("ok"))
                   {
-                      bc_barcodeTableAdapter.UpdateIsa(true, int.Parse(barcodetable.Rows[i]["id"].ToString()));
+                      bc_barcodeTableAdapter.DeleteQuery(int.Parse(barcodetable.Rows[i]["id"].ToString()));
+                      //bc_barcodeTableAdapter.UpdateIsa(true, int.Parse(barcodetable.Rows[i]["id"].ToString()));
                       Console.WriteLine(barcodetable.Rows[i]["id"].ToString());
+                     
                   }             
               }
               catch (Exception e) {
