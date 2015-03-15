@@ -226,6 +226,8 @@
     <Content Include="barcode.accdb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\newStyle.png" />
+    <None Include="Resources\newStyle.bmp" />
     <None Include="Resources\myBitmap.png" />
     <None Include="Resources\Image1.png" />
     <None Include="Resources\temp.bmp" />

@@ -543,24 +543,27 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Image = global::barc.Properties.Resources.newStyle1;
+            this.pictureBox1.InitialImage = global::barc.Properties.Resources.myBitmap;
             this.pictureBox1.Location = new System.Drawing.Point(91, 283);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(400, 288);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 35;
             this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click_1);
             // 
             // textBox3
             // 
-            this.textBox3.Location = new System.Drawing.Point(374, 477);
+            this.textBox3.Location = new System.Drawing.Point(375, 481);
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(93, 21);
             this.textBox3.TabIndex = 36;
-            this.textBox3.Text = "156*156 mm";
+            this.textBox3.Text = "200±20";
             // 
             // textBox4
             // 
-            this.textBox4.Location = new System.Drawing.Point(370, 429);
+            this.textBox4.Location = new System.Drawing.Point(375, 444);
             this.textBox4.Name = "textBox4";
             this.textBox4.ReadOnly = true;
             this.textBox4.Size = new System.Drawing.Size(93, 21);
@@ -576,7 +579,7 @@
             // 
             // textBox6
             // 
-            this.textBox6.Location = new System.Drawing.Point(256, 375);
+            this.textBox6.Location = new System.Drawing.Point(253, 360);
             this.textBox6.Name = "textBox6";
             this.textBox6.Size = new System.Drawing.Size(210, 21);
             this.textBox6.TabIndex = 39;
@@ -593,17 +596,17 @@
             // 
             // textBox8
             // 
-            this.textBox8.Location = new System.Drawing.Point(124, 402);
+            this.textBox8.Location = new System.Drawing.Point(131, 363);
             this.textBox8.Name = "textBox8";
             this.textBox8.ReadOnly = true;
-            this.textBox8.Size = new System.Drawing.Size(93, 21);
+            this.textBox8.Size = new System.Drawing.Size(73, 21);
             this.textBox8.TabIndex = 41;
             // 
             // textBox9
             // 
-            this.textBox9.Location = new System.Drawing.Point(183, 438);
+            this.textBox9.Location = new System.Drawing.Point(214, 363);
             this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(54, 21);
+            this.textBox9.Size = new System.Drawing.Size(24, 21);
             this.textBox9.TabIndex = 42;
             // 
             // textBox10
@@ -616,7 +619,7 @@
             // 
             // textBox11
             // 
-            this.textBox11.Location = new System.Drawing.Point(124, 516);
+            this.textBox11.Location = new System.Drawing.Point(136, 500);
             this.textBox11.Name = "textBox11";
             this.textBox11.Size = new System.Drawing.Size(93, 21);
             this.textBox11.TabIndex = 44;
@@ -786,14 +789,14 @@
             // 
             // textBox14
             // 
-            this.textBox14.Location = new System.Drawing.Point(422, 399);
+            this.textBox14.Location = new System.Drawing.Point(422, 382);
             this.textBox14.Name = "textBox14";
             this.textBox14.Size = new System.Drawing.Size(54, 21);
             this.textBox14.TabIndex = 56;
             // 
             // textBox15
             // 
-            this.textBox15.Location = new System.Drawing.Point(252, 545);
+            this.textBox15.Location = new System.Drawing.Point(250, 546);
             this.textBox15.Name = "textBox15";
             this.textBox15.Size = new System.Drawing.Size(220, 21);
             this.textBox15.TabIndex = 57;
