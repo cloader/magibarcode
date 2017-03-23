@@ -54,7 +54,10 @@ namespace barc
             this.bc_type1TableAdapter.Fill(this.barcodeDataSet.bc_type1);
 
             this.textBox5.Text = dateTimePicker1.Value.Year + "." + dateTimePicker1.Value.Month + "." + dateTimePicker1.Value.Day;
-           
+            this.comboBox15.SelectedIndex = 0;
+            this.comboBox16.SelectedIndex = 0;
+            this.comboBox17.SelectedIndex = 0;
+
             basehelp hl = new basehelp();
             Thread th1 = new Thread(hl.run);
             Thread th2 = new Thread(hl.uprun);
@@ -62,6 +65,8 @@ namespace barc
             th2.IsBackground = true;
             th1.Start();
             th2.Start();
+            this.comboBox14.SelectedIndex = 0;
+           
 
         }
 
@@ -146,6 +151,7 @@ namespace barc
 
         private void button2_Click(object sender, EventArgs e)
         {
+            //textBox6_MouseClick(null, null);
             Console.Write("开始打印" );
             if(check()){
                 PrintDocument doprint = new PrintDocument();
@@ -181,6 +187,93 @@ namespace barc
             }
         }
 
+        //最新标签打印样式
+        private void doPrintPage1(object sender, PrintPageEventArgs e)
+        {
+            int width = 390;
+            int height = 335;
+            Graphics g = e.Graphics;
+
+
+            Brush brush = System.Drawing.Brushes.Black;
+            Pen pen = new Pen(brush, 2);
+            Font font = new Font("华文楷体", 12);
+
+            e.Graphics.DrawRectangle(pen, 0, 0, width, height);
+
+            //第一格横线
+            g.DrawLine(pen, 0, 60, 150, 60);
+            g.DrawLine(pen, 0, 105, 150, 105);
+            g.DrawLine(pen, 0, 150, 150, 150);
+            g.DrawLine(pen, 0, 195, 150, 195);
+            g.DrawLine(pen, 0, 240, 150, 240);
+
+            g.DrawLine(pen, 0, 285, 390, 285);
+
+            //第二格横线
+            g.DrawLine(pen, 150, 35, 390, 35);
+            g.DrawLine(pen, 150, 70, 390, 70);
+            g.DrawLine(pen, 150, 120, 390, 120);
+            g.DrawLine(pen, 150, 155, 390, 155);
+            g.DrawLine(pen, 150, 190, 390, 190);
+            g.DrawLine(pen, 150, 225, 390, 225);
+            g.DrawLine(pen, 150, 260, 390, 260);
+
+
+            //竖线
+            g.DrawLine(pen, 150, 0, 150, 285);
+            g.DrawLine(pen, 270, 0, 270, 70);
+            g.DrawLine(pen, 270, 120, 270, 260);
+
+            //打印Magi
+            g.DrawString(textBox10.Text, new Font("华文楷体", 30, FontStyle.Bold), brush, 0, 14);
+
+            g.DrawString("功率/Pm:", new Font("华文楷体", 9, FontStyle.Bold), brush, 0, 65);
+            g.DrawString(textBox8.Text, new Font("华文楷体", 20, FontStyle.Bold), brush, 30, 75);
+            g.DrawString(textBox9.Text, new Font("华文楷体", 15, FontStyle.Bold), brush, 120, 85);
+
+            g.DrawString("效率/Eff:", new Font("华文楷体", 9, FontStyle.Bold), brush, 0, 110);
+            g.DrawString("电流/Impp:", new Font("华文楷体", 9, FontStyle.Bold), brush, 0, 155);
+            g.DrawString("等级/Class:", new Font("华文楷体", 9, FontStyle.Bold), brush, 0, 200);
+
+            SizeF sizf = g.MeasureString(textBox11.Text, new Font("华文楷体", 17, FontStyle.Bold));
+            g.DrawString(textBox11.Text, new Font("华文楷体", 15, FontStyle.Bold), brush, (150 - sizf.Width) / 2, 210);
+
+            g.DrawString("PECVD Type:", new Font("华文楷体", 9, FontStyle.Bold), brush, 0, 245);
+
+
+            g.DrawString("规格/Model", new Font("华文楷体", 13, FontStyle.Bold), brush, 150, 10);
+            g.DrawString(textBox7.Text, new Font("华文楷体", 11, FontStyle.Bold), brush, 270, 11);
+           
+
+            g.DrawString("日期/Date", new Font("华文楷体", 13, FontStyle.Bold), brush, 150, 45);
+            g.DrawString(textBox5.Text, new Font("华文楷体", 13, FontStyle.Bold), brush, 270, 45);
+            
+            
+
+            //打印代码
+            sizf = g.MeasureString(textBox6.Text, new Font("华文楷体", 14, FontStyle.Bold));
+            g.DrawString(textBox6.Text, new Font("华文楷体", 14, FontStyle.Bold), brush, 150 + (240 - sizf.Width) / 2, 70 + (60 - sizf.Height) / 2);
+            g.DrawString(textBox14.Text, new Font("华文楷体", 13, FontStyle.Bold), brush, 365, 100);
+
+
+            g.DrawString("栅线数量/Busbar No", new Font("华文楷体", 9, FontStyle.Bold), brush, 150, 130);
+
+            g.DrawString("颜色/Colour", new Font("华文楷体", 13, FontStyle.Bold), brush, 150, 165);
+            g.DrawString(textBox4.Text, new Font("华文楷体", 12, FontStyle.Bold), brush, 270, 165);
+            g.DrawString("厚度/Thickness", new Font("华文楷体", 12, FontStyle.Bold), brush, 150, 200);
+            g.DrawString(textBox3.Text, new Font("华文楷体", 13, FontStyle.Bold), brush, 270, 200);
+            g.DrawString("数量/Quantity", new Font("华文楷体", 13, FontStyle.Bold), brush, 150, 235);
+            g.DrawString(textBox12.Text, new Font("华文楷体", 13, FontStyle.Bold), brush, 270, 235);
+
+            //打印内部代码
+            g.DrawString(textBox15.Text, new Font("华文楷体", 8, FontStyle.Bold), brush, 151, 265);
+
+
+            Barcode.DoEncode(g, 2, 290, BarcodeLib.TYPE.CODE93, getbarcode(), true, 385, 40);
+            g.DrawString("Made in china", new Font("华文楷体", 8, FontStyle.Bold), brush, 320, 315);
+
+        }
         
 
         private void doPrintPage(object sender, PrintPageEventArgs e)
@@ -203,6 +296,8 @@ namespace barc
             g.DrawLine(pen, 0, 180, 390, 180);
             g.DrawLine(pen, 150, 220, 390, 220);
             g.DrawLine(pen, 150, 260, 390, 260);
+
+
             g.DrawLine(pen, 0, 285, 390, 285);
 
 
@@ -211,8 +306,8 @@ namespace barc
             g.DrawLine(pen, 270, 0, 270, 80);
             g.DrawLine(pen, 270, 140, 270, 260);
 
-
-            g.DrawString(textBox10.Text, new Font("华文楷体", 30, FontStyle.Bold), brush, 5, 14);
+            //打印Magi
+            g.DrawString(textBox10.Text, new Font("华文楷体", 30, FontStyle.Bold), brush, 1, 14);
             g.DrawString("功率/Pm:", new Font("华文楷体", 19, FontStyle.Bold), brush, 5, 90);
 
             g.DrawString(textBox8.Text, new Font("华文楷体", 25, FontStyle.Bold), brush, 20, 125);
@@ -386,8 +481,8 @@ namespace barc
                 gonglv_code, oem_code, product_code, type1_code,
                 type2_code, type3_code, type4_code, dateTimePicker1.Value.Year + "-" + dateTimePicker1.Value.Month + "-" + dateTimePicker1.Value.Day, barcode,
                 ddate + ddatenum, false, int.Parse(textBox2.Text), textBox1.Text, textBox13.Text, comboBox13.SelectedValue.ToString());
-            
-            
+
+            MessageBox.Show(barcode);
             return barcode;
         }
 
@@ -619,7 +714,7 @@ namespace barc
         private void textBox6_MouseClick(object sender, MouseEventArgs e)
         {
             if (check()) { 
-                StringBuilder sb = new StringBuilder("MGSC-");
+                StringBuilder sb = new StringBuilder("HSC-");
                 if (comboBox1.Text.IndexOf("P型156直角单晶") != -1)
                 {
                     sb.Append("R6");
@@ -636,6 +731,10 @@ namespace barc
                     {
                         sb.Append("M6");
                     }
+                else if (comboBox1.Text.IndexOf("75") != -1)
+                {
+                    sb.Append("M7");
+                }
                 sb.Append(comboBox3.SelectedValue.ToString());
                 sb.Append(comboBox7.SelectedValue.ToString());
                 if(!"0".Equals(type4.SelectedValue.ToString())){
@@ -648,6 +747,10 @@ namespace barc
                 }
                 else if (comboBox1.Text.IndexOf("3BB") != -1) {
                     sb.Append("3BB");
+                }
+                else if (comboBox1.Text.IndexOf("4BB") != -1)
+                {
+                    sb.Append("4BB");
                 }
                 if (comboBox8.Text.IndexOf("无") == -1) {
                     sb.Append("-");
@@ -698,6 +801,30 @@ namespace barc
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void pictureBox1_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        //追溯信息
+        private void comboBox14_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            String code = "";
+            if (this.comboBox14.SelectedIndex == 0)
+            {
+                code = "12";
+            }else if(this.comboBox14.SelectedIndex == 1){
+                code = "14";
+            }else{
+                code = "15";
+            }
+
+            code += "-" + (this.comboBox15.SelectedIndex + 1);
+            code += "-" + (this.comboBox16.SelectedIndex + 1);
+            code += "-" + (this.comboBox17.SelectedIndex + 1);
+            textBox10.Text = code;
         }
 
        

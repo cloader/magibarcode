@@ -45,6 +45,7 @@ namespace barc
          
         public basehelp() {
             Console.WriteLine("启动同步线程");
+            Console.WriteLine(IP);
             }
 
        
@@ -127,6 +128,7 @@ namespace barc
                 //同步数据
                 foreach (String s in tables)
                 {
+                    Console.WriteLine(s);
                     try
                     {
                         WebClient client = new WebClient();
